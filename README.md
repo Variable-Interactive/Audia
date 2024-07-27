@@ -4,3 +4,5 @@
 
 Lets you treat tags as audio clips!!
 Open it through Window Menu > Audia
+##How to use:
+Change the driver from (Dummy) to something other driver. Drag and drop the audio to place it in (Music Library). Write any tag's name in (Play on Tag) field. You will hear sound whenever that tag is played
