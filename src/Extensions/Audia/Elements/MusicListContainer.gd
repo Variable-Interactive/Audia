@@ -50,7 +50,7 @@ func _exit_tree() -> void:
 
 
 func add_audios(file_paths: PackedStringArray, _screen: int = 0):
-	var project: Project = ExtensionsApi.project.current_project
+	var project = ExtensionsApi.project.current_project
 	var data: Array = project.get_meta("Music", [])
 	var valid_exts = ["mp3", "ogg", "wav"]
 	var audio_added := false
@@ -74,7 +74,7 @@ func add_audios(file_paths: PackedStringArray, _screen: int = 0):
 
 
 func update_list():
-	var project: Project = ExtensionsApi.project.current_project
+	var project = ExtensionsApi.project.current_project
 	# the project has changed, so change the undo_redo as well
 	if not project.undo_redo.version_changed.is_connected(check_tag_update):
 		project.undo_redo.version_changed.connect(check_tag_update)

@@ -3,7 +3,7 @@ extends AudioStreamPlayer
 var timer: Timer
 var end_time: float
 
-func start(current_frame: int, tag: AnimationTag, streamer: AudioStream):
+func start(current_frame: int, tag, streamer: AudioStream):
 	var project = ExtensionsApi.project.current_project
 	timer = ExtensionsApi.general.get_global().animation_timer
 
@@ -11,7 +11,7 @@ func start(current_frame: int, tag: AnimationTag, streamer: AudioStream):
 
 	var start_time: float = 0
 	for frame_idx in range(tag.from - 1, tag.to):
-		var frame: Frame = project.frames[frame_idx]
+		var frame = project.frames[frame_idx]
 		var duration = frame.duration * (1.0 / project.fps)
 		if frame_idx < current_frame:
 			start_time += duration

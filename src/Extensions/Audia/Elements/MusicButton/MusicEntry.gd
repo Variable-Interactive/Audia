@@ -44,7 +44,7 @@ func prepare_stream():
 
 
 func _on_Identifier_text_changed(_new_text: String) -> void:
-	var project: Project = ExtensionsApi.project.current_project
+	var project = ExtensionsApi.project.current_project
 	var data: Array = project.get_meta("Music", [])
 	data.erase(reference_data)
 	_update_tag(reference_data["identifier"])
@@ -53,7 +53,7 @@ func _on_Identifier_text_changed(_new_text: String) -> void:
 
 
 func _on_Close_pressed() -> void:
-	var project: Project = ExtensionsApi.project.current_project
+	var project = ExtensionsApi.project.current_project
 	var data: Array = project.get_meta("Music", [])
 	data.erase(reference_data)
 	queue_free()

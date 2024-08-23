@@ -66,7 +66,7 @@ func override_export(data: Dictionary):
 				# calculate duration for audio
 				var end_time := 0.0
 				for frame_idx in range(tag.from - 1, tag.to):
-					var frame: Frame = project.frames[frame_idx]
+					var frame = project.frames[frame_idx]
 					var audio_duration = frame.duration * (1.0 / project.fps)
 					end_time += audio_duration
 				# if audio wasn't moved to aseet folder yet then move it there

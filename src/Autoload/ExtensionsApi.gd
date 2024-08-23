@@ -78,8 +78,8 @@ class GeneralAPI:
 	## [br][param shader] --> preload of the shader.
 	## [br][param params] --> a dictionary of params used by the shader.
 	## [br][param size] --> It is the project's size.
-	func get_new_shader_image_effect() -> ShaderImageEffect:
-		return ShaderImageEffect.new()
+	func get_new_shader_image_effect() -> RefCounted:
+		return RefCounted.new()
 
 	## Returns parent of the nodes listed in extension.json -> "nodes".
 	func get_extensions_node() -> Node:
@@ -90,14 +90,14 @@ class GeneralAPI:
 	func get_canvas():
 		return
 
-	func create_value_slider() -> ValueSlider:
-		return ValueSlider.new()
+	func create_value_slider() -> RefCounted:
+		return RefCounted.new()
 
-	func create_value_slider_v2() -> ValueSliderV2:
-		return ValueSliderV2.new()
+	func create_value_slider_v2() -> RefCounted:
+		return RefCounted.new()
 
-	func create_value_slider_v3() -> ValueSliderV3:
-		return ValueSliderV3.new()
+	func create_value_slider_v3() -> RefCounted:
+		return RefCounted.new()
 
 
 ## Gives ability to add/remove items from menus in the top bar.
@@ -273,7 +273,7 @@ class SelectionAPI:
 ## Gives access to basic project manipulation functions.
 class ProjectAPI:
 	## The project currently in focus
-	var current_project: Project:
+	var current_project: RefCounted:
 		set(value):
 			pass
 		get:
@@ -284,21 +284,21 @@ class ProjectAPI:
 	## frames [param frames]. The created project also gets returned.[br][br]
 	## [param frames] is an [Array] of type [Frame]. Usually it can be left as [code][][/code].
 	func new_project(
-		frames: Array[Frame] = [],
+		frames: Array[RefCounted] = [],
 		name := tr("untitled"),
 		size := Vector2(64, 64),
 		fill_color := Color.TRANSPARENT
-	) -> Project:
+	) -> RefCounted:
 		return
 
 	## Creates and returns a new [Project] in a new tab, with an optional [param name].
 	## Unlike [method new_project], no starting frame/layer gets created.
 	## Useful if you want to deserialize project data.
-	func new_empty_project(name := tr("untitled")) -> Project:
+	func new_empty_project(name := tr("untitled")) -> RefCounted:
 		return
 
 	## Returns a dictionary containing all the project information.
-	func get_project_info(project: Project) -> Dictionary:
+	func get_project_info(project: RefCounted) -> Dictionary:
 		return {}
 
 	## Selects the cels and makes the last entry of [param selected_array] as the current cel
@@ -312,13 +312,13 @@ class ProjectAPI:
 	## Returns the current cel.
 	## Cel type can be checked using function [method get_class_name] inside the cel
 	## type can be GroupCel, PixelCel, Cel3D, or BaseCel.
-	func get_current_cel() -> BaseCel:
+	func get_current_cel() -> RefCounted:
 		return
 
 	## Frames are counted from left to right, layers are counted from bottom to top.
 	## Frames/layers start at "0" and end at [param project.frames.size() - 1] and
 	## [param project.layers.size() - 1] respectively.
-	func get_cel_at(project: Project, frame: int, layer: int) -> BaseCel:
+	func get_cel_at(project: RefCounted, frame: int, layer: int) -> RefCounted:
 		return
 
 	## Sets an [param image] at [param frame] and [param layer] on the current project.
