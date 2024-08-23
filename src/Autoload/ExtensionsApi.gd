@@ -3,7 +3,8 @@ extends Node
 # curated documentation of the Api.
 # If it still doesn't show try again after doing Project-->Reload current project
 
-## The Official ExtensionsAPI for pixelorama.
+## The Header API synced to pixelorama commit: ff2a5f8b332ba24c15b42474864635c1bacf074a
+## (21 Aug 2024).
 ##
 ## This Api gives you the essentials to develop a working extension for Pixelorama.[br]
 ## The Api consists of many smaller Apis, each giving access to different areas of the Software.
@@ -52,7 +53,7 @@ func get_main_nodes(extension_name: StringName) -> Array[Node]:
 class GeneralAPI:
 	## Returns the current version of pixelorama.
 	func get_pixelorama_version() -> String:
-		return "v1.0-stable"
+		return "v1.0.2-stable"
 
 	## Returns the [ConfigFile] contains all the settings (Brushes, sizes, preferences, etc...).
 	func get_config_file() -> ConfigFile:
@@ -88,6 +89,15 @@ class GeneralAPI:
 	## normally used to add a custom preview to the canvas.
 	func get_canvas():
 		return
+
+	func create_value_slider() -> ValueSlider:
+		return ValueSlider.new()
+
+	func create_value_slider_v2() -> ValueSliderV2:
+		return ValueSliderV2.new()
+
+	func create_value_slider_v3() -> ValueSliderV3:
+		return ValueSliderV3.new()
 
 
 ## Gives ability to add/remove items from menus in the top bar.
@@ -135,7 +145,7 @@ class PanelAPI:
 			return false
 
 	## Adds the [param node] as a tab. Initially it's placed on the same panel as the tools tab,
-	## but can be changed through adding custom layouts.
+	## but can be changed through layouts.
 	func add_node_as_tab(node: Node) -> void:
 		return
 
@@ -390,6 +400,27 @@ class ImportAPI:
 class PaletteAPI:
 	## Creates and adds a new [Palette] with name [param palette_name] with [param data]
 	## in the form of a [Dictionary].
+	## An example of [code]data[/code] dictionary will be:[codeblock]
+	## {
+	## "colors": [
+	##  {
+	##   "color": "(0, 0, 0, 1)",
+	##   "index": 0
+	##  },
+	##  {
+	##   "color": "(0.1294, 0.1216, 0.2039, 1)",
+	##   "index": 1
+	##  },
+	##  {
+	##   "color": "(0.2667, 0.1569, 0.2314, 1)",
+	##   "index": 2
+	##  }
+	## ],
+	## "comment": "Place comment here",
+	## "height": 4,
+	## "width": 8
+	## }
+	## [/codeblock]
 	func create_palette_from_data(palette_name: String, data: Dictionary) -> void:
 		return
 
